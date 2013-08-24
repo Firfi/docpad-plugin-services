@@ -129,7 +129,7 @@ module.exports = (BasePlugin) ->
                  (function(){
                  var vk = document.createElement('script'); vk.type = 'text/javascript'; vk.async = true; vk.charset = 'windows-1251';
                  vk.src = 'http://vkontakte.ru/js/api/openapi.js';
-                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vk, s);
                  })();
                  VK.init({
                  apiId: "#{escape vkAppId}",
