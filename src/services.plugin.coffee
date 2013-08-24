@@ -32,11 +32,11 @@ module.exports = (BasePlugin) ->
         return result
 
       # Get Google Plus One Button
-      getGooglePlusOneButton: ->
+      getGooglePlusOneButton: (url) ->
         # Prepare
         services = @getServices()
         return ''  if services.googlePlusOneButton is false
-        pageUrl = @getPageUrl()
+        pageUrl = url ? @getPageUrl()
 
         # Return
         return """
@@ -90,12 +90,12 @@ module.exports = (BasePlugin) ->
           """
 
       # Get Facebook Like Button
-      getFacebookLikeButton: ->
+      getFacebookLikeButton: (url) ->
         # Prepare
         services = @getServices()
         facebookApplicationId = services.facebookLikeButton?.applicationId ? '266367676718271'
         return ''  unless facebookApplicationId
-        pageUrl = @getPageUrl()
+        pageUrl = url ? @getPageUrl()
 
         # Return
         return """

@@ -37,13 +37,13 @@ module.exports = function(BasePlugin) {
         }
         return result;
       },
-      getGooglePlusOneButton: function() {
+      getGooglePlusOneButton: function(url) {
         var pageUrl, services;
         services = this.getServices();
         if (services.googlePlusOneButton === false) {
           return '';
         }
-        pageUrl = this.getPageUrl();
+        pageUrl = url != null ? url : this.getPageUrl();
         return "<div class=\"google-plus-one-button social-button\">\n  <div class=\"g-plusone\" data-size=\"medium\" data-href=\"" + (escape(pageUrl)) + "\"></div>\n  <script>\n    (function() {\n      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;\n      po.src = 'https://apis.google.com/js/plusone.js';\n      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);\n    })();\n  </script>\n</div>";
       },
       getRedditSubmitButton: function() {
@@ -64,14 +64,14 @@ module.exports = function(BasePlugin) {
         pageUrl = this.getPageUrl();
         return "<div class=\"hacker-news-submit-button social-button\">\n  <a href=\"http://news.ycombinator.com/submit\" class=\"hn-share-button\" data-url=\"" + pageUrl + "\">Vote on HN</a>\n  <script>\n    (function(d, t) {\n      var g = d.createElement(t),\n        s = d.getElementsByTagName(t)[0];\n        g.src = '//hnbutton.appspot.com/static/hn.min.js';\n      s.parentNode.insertBefore(g, s);\n    }(document, 'script'));\n  </script>\n</div>";
       },
-      getFacebookLikeButton: function() {
+      getFacebookLikeButton: function(url) {
         var facebookApplicationId, pageUrl, services, _ref1, _ref2;
         services = this.getServices();
         facebookApplicationId = (_ref1 = (_ref2 = services.facebookLikeButton) != null ? _ref2.applicationId : void 0) != null ? _ref1 : '266367676718271';
         if (!facebookApplicationId) {
           return '';
         }
-        pageUrl = this.getPageUrl();
+        pageUrl = url != null ? url : this.getPageUrl();
         return "<div class=\"facebook-like-button social-button\">\n  <iframe src=\"//www.facebook.com/plugins/like.php?href=" + (escape(pageUrl)) + "&amp;send=false&amp;layout=button_count&amp;width=30px&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=" + (escape(facebookApplicationId)) + "\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:110px; height:21px;\" allowTransparency=\"true\"></iframe>\n</div>";
       },
       getFacebookFollowButton: function() {
