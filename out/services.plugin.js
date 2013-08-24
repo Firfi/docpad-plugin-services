@@ -72,7 +72,7 @@ module.exports = function(BasePlugin) {
           return '';
         }
         pageUrl = this.getPageUrl();
-        return "<div class=\"facebook-like-button social-button\">\n  <iframe src=\"//www.facebook.com/plugins/like.php?href=" + (escape(pageUrl)) + "&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=" + (escape(facebookApplicationId)) + "\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:450px; height:21px;\" allowTransparency=\"true\"></iframe>\n</div>";
+        return "<div class=\"facebook-like-button social-button\">\n  <iframe src=\"//www.facebook.com/plugins/like.php?href=" + (escape(pageUrl)) + "&amp;send=false&amp;layout=button_count&amp;width=30px&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=" + (escape(facebookApplicationId)) + "\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:110px; height:21px;\" allowTransparency=\"true\"></iframe>\n</div>";
       },
       getFacebookFollowButton: function() {
         var facebookApplicationId, facebookUsername, services, _ref1, _ref2, _ref3;
@@ -91,7 +91,7 @@ module.exports = function(BasePlugin) {
         if (!vkAppId) {
           return '';
         }
-        return "<div class=\"vk-like-button social-button\">\n  <script>\n  (function(){\n  var vk = document.createElement('script'); vk.type = 'text/javascript'; vk.async = true; vk.charset = 'windows-1251';\n  vk.src = 'http://vkontakte.ru/js/api/openapi.js';\n  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);\n  })();\n  VK.init({\n  apiId: \"" + (escape(vkAppId)) + "\",\n  onlyWidgets: true\n  })();\n  </script>\n</div>";
+        return "<div class=\"vk-like-button social-button\">\n  <script>\n  (function(){\n  var vk = document.createElement('script'); vk.type = 'text/javascript'; vk.async = true; vk.charset = 'windows-1251';\n  vk.src = 'http://vkontakte.ru/js/api/openapi.js';\n  vk.addEventListener('load', function (e) {\n    VK.init({\n      apiId: \"" + (escape(vkAppId)) + "\",\n      onlyWidgets: true\n    });\n    VK.Widgets.Like(\"vk_like\", {type: \"mini\"});\n  }, false);\n  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vk, s);\n  })();\n  </script>\n  <div id=\"vk_like\"></div>\n</div>";
       },
       getTwitterTweetButton: function() {
         var services, twitterUsername;

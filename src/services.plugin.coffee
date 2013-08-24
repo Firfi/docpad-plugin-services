@@ -100,7 +100,7 @@ module.exports = (BasePlugin) ->
         # Return
         return """
           <div class="facebook-like-button social-button">
-            <iframe src="//www.facebook.com/plugins/like.php?href=#{escape pageUrl}&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=#{escape facebookApplicationId}" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
+            <iframe src="//www.facebook.com/plugins/like.php?href=#{escape pageUrl}&amp;send=false&amp;layout=button_count&amp;width=30px&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=#{escape facebookApplicationId}" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
           </div>
           """
 
@@ -129,13 +129,17 @@ module.exports = (BasePlugin) ->
                  (function(){
                  var vk = document.createElement('script'); vk.type = 'text/javascript'; vk.async = true; vk.charset = 'windows-1251';
                  vk.src = 'http://vkontakte.ru/js/api/openapi.js';
+                 vk.addEventListener('load', function (e) {
+                   VK.init({
+                     apiId: "#{escape vkAppId}",
+                     onlyWidgets: true
+                   });
+                   VK.Widgets.Like("vk_like", {type: "mini"});
+                 }, false);
                  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vk, s);
                  })();
-                 VK.init({
-                 apiId: "#{escape vkAppId}",
-                 onlyWidgets: true
-                 })();
                  </script>
+                 <div id="vk_like"></div>
                </div>
                """
 
