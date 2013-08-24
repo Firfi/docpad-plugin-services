@@ -91,7 +91,7 @@ module.exports = function(BasePlugin) {
         if (!vkAppId) {
           return '';
         }
-        return "<script>\n  (function(){\n  var vk = document.createElement('script'); vk.type = 'text/javascript'; vk.async = true; vk.charset = 'windows-1251';\n  vk.src = 'http://vkontakte.ru/js/api/openapi.js';\n  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);\n  })();\n  VK.init({\n  apiId: \"" + (escape(vkAppId)) + "\",\n  onlyWidgets: true\n  });\n</script>";
+        return "<div class=\"vk-like-button social-button\">\n  <script>\n  (function(){\n  var vk = document.createElement('script'); vk.type = 'text/javascript'; vk.async = true; vk.charset = 'windows-1251';\n  vk.src = 'http://vkontakte.ru/js/api/openapi.js';\n  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);\n  })();\n  VK.init({\n  apiId: \"" + (escape(vkAppId)) + "\",\n  onlyWidgets: true\n  })();\n  </script>\n</div>";
       },
       getTwitterTweetButton: function() {
         var services, twitterUsername;

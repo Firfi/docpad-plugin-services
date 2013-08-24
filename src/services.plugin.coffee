@@ -124,7 +124,8 @@ module.exports = (BasePlugin) ->
         vkAppId = services.vkLikeButton?.applicationId
         return '' unless vkAppId
         return """
-               <script>
+               <div class="vk-like-button social-button">
+                 <script>
                  (function(){
                  var vk = document.createElement('script'); vk.type = 'text/javascript'; vk.async = true; vk.charset = 'windows-1251';
                  vk.src = 'http://vkontakte.ru/js/api/openapi.js';
@@ -133,8 +134,9 @@ module.exports = (BasePlugin) ->
                  VK.init({
                  apiId: "#{escape vkAppId}",
                  onlyWidgets: true
-                 });
-               </script>
+                 })();
+                 </script>
+               </div>
                """
 
       # Get Twitter Tweet Button
